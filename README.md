@@ -1,73 +1,93 @@
-# React + TypeScript + Vite
+# Minecraft Clone
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A high-performance, feature-rich Minecraft clone prototype built with React, Three.js, and TypeScript. This project explores procedural world generation, voxel physics, and immersive 3D web environments.
 
-Currently, two official plugins are available:
+## 🚀 Key Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Procedural World Generation**: Infinite-looking world generated using Simplex noise.
+- **Biomes**: Includes Forest (trees & grass), Desert (stone/sand), and Lakes (water logic).
+- **Advanced Physics Engine**: Custom AABB collision detection with iterative resolution for smooth movement and corner handling.
+- **Creative Mode**: Press `F` to toggle flight mode. Ascend with `Space` and descend with `Shift`.
+- **Dynamic Interaction**: Build and break blocks using a central crosshair.
+- **Heads-Up Display (HUD)**: 2D Hotbar for block selection and a functional Chat interface.
+- **Classical Soundscape**: Background music featuring Beethoven's Moonlight Sonata and interactive sound fallbacks.
+- **Intelligent Spawn**: Automatically detects the highest surface point to ensure safe spawning.
 
-## React Compiler
+## 🛠 Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Framework**: [React](https://reactjs.org/)
+- **3D Engine**: [Three.js](https://threejs.org/) via [@react-three/fiber](https://github.com/pmndrs/react-three-fiber)
+- **Utilities**: [@react-three/drei](https://github.com/pmndrs/drei)
+- **State Management**: [Zustand](https://github.com/pmndrs/zustand)
+- **Noise**: [Simplex-noise](https://www.npmjs.com/package/simplex-noise)
+- **Build Tool**: [Vite](https://vitejs.dev/)
+- **Testing**: [Playwright](https://playwright.dev/) (E2E) and [Vitest](https://vitest.dev/) (Unit)
 
-## Expanding the ESLint configuration
+## 📦 Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/sxa101/minecraft-clone.git
+   cd minecraft-clone
+   ```
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+3. **Install Playwright Browsers:**
+   ```bash
+   npx playwright install --with-deps
+   ```
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 🎮 Usage
+
+### Development
+Start the development server with Hot Module Replacement (HMR):
+```bash
+npm run dev
+```
+To access from your local network:
+```bash
+npm run dev -- --host
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Production Build
+Build the project for production:
+```bash
+npm run build
 ```
+The output will be in the `dist/` directory.
+
+### Deployment
+You can deploy the `dist/` folder to any static site hosting service (e.g., Vercel, Netlify, GitHub Pages).
+
+## ⌨️ Controls
+
+- **WASD**: Move
+- **Space**: Jump / Fly Up
+- **Shift**: Fly Down
+- **F**: Toggle Fly Mode
+- **1-8**: Select Block Type
+- **Left Click**: Break Block
+- **Right Click**: Build Block
+- **T**: Open Chat
+- **Enter**: Send Chat Message
+
+## 🧪 Testing
+
+### Unit Tests
+Run physics and store logic tests:
+```bash
+npm run test
+```
+
+### End-to-End (E2E) Tests
+Run full gameplay verification suite:
+```bash
+npx playwright test
+```
+
+---
+Built with ❤️ using the Gemini CLI.
